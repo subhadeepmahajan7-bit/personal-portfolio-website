@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SUBHADEEP // CYBER_PORTFOLIO</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+</head>
+
+<div class="audio-control">
+        <button id="music-btn" class="cyber-button small outline">[ 🔇 SYS_AUDIO: OFF ]</button>
+        <audio id="bg-music" loop>
+            <source src="assets/cyber-bgm.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+
+<body>
+    <div class="scanlines"></div>
+
+    <nav class="cyber-nav">
+        <div class="nav-logo">SYS.ADMIN_<span class="highlight">SUBHADEEP</span></div>
+        
+        <div class="nav-links" id="nav-links-container">
+            <a href="#home" class="nav-item">[ HOME ]</a>
+            <a href="#about" class="nav-item">[ ABOUT ]</a>
+            <a href="#skills" class="nav-item">[ SKILLS ]</a>
+            <a href="#projects" class="nav-item">[ PROJECTS ]</a>
+            <a href="#contact" class="cyber-button small">CONNECT</a>
+            <button class="mobile-close" id="mobile-menu-close">[ X ]</button>
+        </div>
+
+        <div class="nav-actions">
+            <div class="menu-toggle" id="mobile-menu-open">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <button id="theme-toggle" class="cyber-button small outline" style="cursor: pointer;">[ LIGHT_SYS ]</button>
+        </div>
+    </nav>
+
+    <div class="body-overlay" id="body-overlay"></div>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="system-status">>> SYSTEM ONLINE_</div>
+            <h1 class="glitch" data-text="SUBHADEEP MAHAJAN">SUBHADEEP MAHAJAN</h1>
+            <h2 class="role">AI/ML & ROBOTICS ENGINEER</h2>
+            <p class="terminal-text">"Building the future through AI, robotics, and intelligent systems."</p>
+            <div class="button-group">
+                <a href="#projects" class="cyber-button">INITIATE_PROJECTS</a>
+                <a href="https://github.com/subhadeepmahajan7-bit" target="_blank" class="cyber-button outline">ACCESS_GITHUB</a>
+            </div>
+        </div>
+        
+        <div class="hero-image-container">
+            <div class="cyber-image-frame">
+                <img src="assets/profile.jpg" alt="Subhadeep" class="cyber-image" id="profile-pic" onerror="this.style.display='none'">
+                <div class="image-fallback">AWAITING_IMAGE_UPLOAD</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="container">
+        <h2 class="section-title">>> EXECUTE: ABOUT_ME.EXE</h2>
+        <div class="terminal-window">
+            <div class="terminal-header">
+                <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+                <span class="header-text">bash - subhadeep@root:~</span>
+            </div>
+            <div class="terminal-body">
+                <p><span class="prompt">root@subhadeep:~$</span> cat background.txt</p>
+                <p>Pursuing BTech in Computer Science Engineering at Assam Down Town University. Deeply passionate about Artificial Intelligence, Machine Learning, and Robotics.</p>
+                <p><br><span class="prompt">root@subhadeep:~$</span> cat discipline.txt</p>
+                <p>National-level yoga player selected for the international level. Focus, discipline, and consistency applied to both body and code.</p>
+                <p><br><span class="prompt">root@subhadeep:~$</span> <span class="typing-cursor">_</span></p>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="container">
+        <h2 class="section-title">>> NEURAL_NETWORK_SKILLS</h2>
+        <div class="skills-grid">
+            <div class="cyber-card">
+                <h3>[ PROGRAMMING ]</h3>
+                <ul>
+                    <li>> C & C++</li>
+                    <li>> Java</li>
+                    <li>> Visual Basic</li>
+                </ul>
+            </div>
+            <div class="cyber-card active-node">
+                <h3>[ LEARNING_NODES ]</h3>
+                <ul>
+                    <li>> Python</li>
+                    <li>> Frontend (HTML/CSS/JS)</li>
+                    <li>> AI & Machine Learning</li>
+                </ul>
+            </div>
+            <div class="cyber-card">
+                <h3>[ TECH_STACK ]</h3>
+                <ul>
+                    <li>> Git & GitHub</li>
+                    <li>> VS Code</li>
+                    <li>> IoT & Blockchain</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="container">
+        <h2 class="section-title">>> DEPLOYED_MODULES</h2>
+        <div class="project-grid">
+            
+            <div class="project-card">
+                <div class="card-image-placeholder" style="background-color: #020502; background-image: url('assets/project1.png'); background-size: contain; background-repeat: no-repeat; background-position: center; height: 250px; border-bottom: 1px solid var(--neon-green); box-shadow: inset 0 0 20px rgba(0,255,65,0.1);">
+                </div>
+                <div class="card-content" style="padding-top: 20px;">
+                    <h3>[ NE_EXPLORER ]</h3>
+                    <p>HackStone Project Module: A comprehensive digital guide and exploration platform for North East India.</p>
+                    <a href="https://nishantroy449.github.io/ne-explorer-HackStone-Project/#/guides" target="_blank" class="cyber-button small outline">LAUNCH_SYS</a>
+                </div>
+            </div>
+
+           
+    </section>
+
+
+   <section id="certificates" class="container">
+        <h2 class="section-title">>> VERIFIED_CREDENTIALS</h2>
+        <div class="project-grid">
+            
+            <div class="cyber-card cert-card" data-img="assets/cert-blockchain.jpg">
+                <h3>[ BLOCKCHAIN+ ]</h3>
+                <p>Executive Certification by AI CERTs</p>
+                <button class="cyber-button small outline">VIEW_RECORD</button>
+            </div>
+
+            <div class="cyber-card cert-card" data-img="assets/cert-cisco.jpg">
+                <h3>[ CISCO_IOT ]</h3>
+                <p>Introduction to IoT and Digital Transformation</p>
+                <button class="cyber-button small outline">VIEW_RECORD</button>
+            </div>
+
+            <div class="cyber-card cert-card" data-img="assets/cert-gdg.jpg">
+                <h3>[ GDG_WORKSHOP ]</h3>
+                <p>Git Collaboration Workshop</p>
+                <button class="cyber-button small outline">VIEW_RECORD</button>
+            </div>
+
+            <div class="cyber-card cert-card" data-img="assets/cert-diploma.jpg">
+                <h3>[ ADV_DIPLOMA ]</h3>
+                <p>Computer Application (12 Months, Grade A+)</p>
+                <button class="cyber-button small outline">VIEW_RECORD</button>
+            </div>
+
+            <div class="cyber-card cert-card" data-img="assets/cert-yoga.jpg">
+                <h3>[ NAT_YOGA ]</h3>
+                <p>All India Yogasana Championship</p>
+                <button class="cyber-button small outline">VIEW_RECORD</button>
+            </div>
+
+        </div>
+    </section>
+    <div id="cert-modal" class="cyber-modal">
+        <div class="modal-content">
+            <span class="close-modal">[ X ] TERMINATE</span>
+            
+            <div class="hologram-container">
+                <div class="laser-scanner"></div>
+                <img id="modal-img" src="" alt="Certificate Data">
+            </div>
+
+        </div>
+    </div>
+
+ 
+
+    <footer id="contact" class="cyber-footer">
+        <h2 class="section-title">>> ESTABLISH_CONNECTION</h2>
+        <div class="social-links">
+            <a href="https://github.com/subhadeepmahajan7-bit" target="_blank" class="cyber-link">[ GITHUB ]</a>
+            <a href="https://www.linkedin.com/in/subhadeep-mahajan-972512381" target="_blank" class="cyber-link">[ LINKEDIN ]</a>
+            <a href="https://x.com/suroech17" target="_blank" class="cyber-link">[ TWITTER/X ]</a>
+            <a href="mailto:subhadeepmahajan7@gmail.com" class="cyber-link">[ TRANSMIT_EMAIL ]</a>
+        </div>
+        <p class="copyright">SYS.LOG: © 2026 SUBHADEEP MAHAJAN. ALL SYSTEMS NORMAL.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

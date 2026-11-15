@@ -1,0 +1,740 @@
+/* --- CYBERPUNK VARIABLES --- */
+:root {
+    --neon-green: #00ff41; /* Classic Matrix Green */
+    --dark-bg: #050505;
+    --panel-bg: rgba(0, 40, 10, 0.4);
+    --text-main: #e0e0e0;
+    --glitch-red: #ff003c;
+    --glitch-blue: #00e5ff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--dark-bg);
+    color: var(--text-main);
+    font-family: 'Share Tech Mono', monospace;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, .nav-logo, .cyber-button {
+    font-family: 'Orbitron', sans-serif;
+    text-transform: uppercase;
+}
+
+/* --- SCANLINES BACKGROUND --- */
+.scanlines {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0),
+        rgba(255, 255, 255, 0) 50%,
+        rgba(0, 0, 0, 0.2) 50%,
+        rgba(0, 0, 0, 0.2)
+    );
+    background-size: 100% 4px;
+    z-index: 9999;
+    pointer-events: none; /* Lets you click through it */
+}
+
+/* --- NAVIGATION --- */
+.cyber-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 5%;
+    background: rgba(5, 5, 5, 0.9);
+    border-bottom: 2px solid var(--neon-green);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-logo {
+    font-size: 1.5rem;
+    color: var(--text-main);
+    letter-spacing: 2px;
+}
+
+.highlight {
+    color: var(--neon-green);
+    text-shadow: 0 0 10px var(--neon-green);
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+
+.nav-item {
+    color: var(--neon-green);
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: all 0.3s;
+}
+
+.nav-item:hover {
+    color: var(--text-main);
+    text-shadow: 0 0 8px var(--text-main);
+}
+
+/* --- CYBER BUTTONS --- */
+.cyber-button {
+    display: inline-block;
+    background: var(--neon-green);
+    color: #000;
+    padding: 15px 30px;
+    font-weight: 700;
+    text-decoration: none;
+    letter-spacing: 2px;
+    /* This creates the cool angled corners */
+    clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+    transition: all 0.3s;
+    border: none;
+    cursor: pointer;
+    position: relative;
+}
+
+.cyber-button:hover {
+    background: #fff;
+    box-shadow: 0 0 20px var(--neon-green);
+    transform: scale(1.05);
+}
+
+.cyber-button.outline {
+    background: transparent;
+    color: var(--neon-green);
+    border: 2px solid var(--neon-green);
+    /* Remove clip-path for outlined buttons to keep border intact, or use a pseudo element. We'll stick to square for the outline variant for stability */
+    clip-path: none; 
+}
+
+.cyber-button.outline:hover {
+    background: var(--neon-green);
+    color: #000;
+}
+
+.cyber-button.small {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+}
+
+/* --- HERO SECTION --- */
+.hero {
+    min-height: 90vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10%;
+    position: relative;
+    background: radial-gradient(circle at center, #001a05 0%, #050505 100%);
+}
+
+.hero-content {
+    flex: 1;
+    z-index: 10;
+}
+
+.system-status {
+    color: var(--neon-green);
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+.role {
+    color: #888;
+    letter-spacing: 3px;
+    margin-bottom: 20px;
+}
+
+.terminal-text {
+    font-size: 1.2rem;
+    margin-bottom: 40px;
+    border-left: 3px solid var(--neon-green);
+    padding-left: 15px;
+}
+
+.button-group {
+    display: flex;
+    gap: 20px;
+}
+
+/* --- GLITCH EFFECT --- */
+.glitch {
+    font-size: 4rem;
+    color: #fff;
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.glitch::before, .glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--dark-bg);
+}
+
+.glitch::before {
+    left: 2px;
+    text-shadow: -2px 0 var(--glitch-red);
+    animation: glitch-anim-1 2s infinite linear alternate-reverse;
+}
+
+.glitch::after {
+    left: -2px;
+    text-shadow: -2px 0 var(--glitch-blue);
+    animation: glitch-anim-2 3s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-anim-1 {
+    0% { clip-path: inset(20% 0 80% 0); }
+    20% { clip-path: inset(60% 0 10% 0); }
+    40% { clip-path: inset(40% 0 50% 0); }
+    60% { clip-path: inset(80% 0 5% 0); }
+    80% { clip-path: inset(10% 0 70% 0); }
+    100% { clip-path: inset(30% 0 20% 0); }
+}
+
+@keyframes glitch-anim-2 {
+    0% { clip-path: inset(10% 0 60% 0); }
+    20% { clip-path: inset(30% 0 20% 0); }
+    40% { clip-path: inset(70% 0 10% 0); }
+    60% { clip-path: inset(20% 0 50% 0); }
+    80% { clip-path: inset(50% 0 30% 0); }
+    100% { clip-path: inset(5% 0 80% 0); }
+}
+
+/* --- IMAGE FRAME (HERO) --- */
+.hero-image-container {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.cyber-image-frame {
+    width: 350px;
+    height: 450px;
+    border: 2px solid var(--neon-green);
+    position: relative;
+    padding: 10px;
+    background: repeating-linear-gradient(
+        45deg,
+        rgba(0, 255, 65, 0.05),
+        rgba(0, 255, 65, 0.05) 10px,
+        transparent 10px,
+        transparent 20px
+    );
+    box-shadow: 0 0 30px rgba(0, 255, 65, 0.2);
+}
+
+.cyber-image-frame::before {
+    content: '';
+    position: absolute;
+    top: -5px; left: -5px; right: -5px; bottom: -5px;
+    border: 1px solid rgba(0, 255, 65, 0.5);
+    z-index: -1;
+}
+
+.cyber-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(100%) contrast(120%);
+    transition: filter 0.3s;
+}
+
+.cyber-image:hover {
+    filter: grayscale(0%) contrast(100%);
+}
+
+.image-fallback {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--neon-green);
+    font-size: 1.2rem;
+    text-align: center;
+    border: 1px solid var(--neon-green);
+    padding: 10px;
+    background: rgba(0,0,0,0.8);
+}
+
+/* --- TERMINAL WINDOW (ABOUT SECTION) --- */
+.container {
+    padding: 100px 10%;
+}
+
+.section-title {
+    color: var(--neon-green);
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    border-bottom: 1px solid #333;
+    padding-bottom: 10px;
+}
+
+.terminal-window {
+    background: #0a0a0a;
+    border: 1px solid #333;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+}
+
+.terminal-header {
+    background: #1a1a1a;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #333;
+}
+
+.dot {
+    height: 12px; width: 12px;
+    border-radius: 50%;
+    margin-right: 8px;
+}
+.dot.red { background: #ff5f56; }
+.dot.yellow { background: #ffbd2e; }
+.dot.green { background: #27c93f; }
+
+.header-text {
+    color: #888;
+    margin-left: 15px;
+    font-family: monospace;
+}
+
+.terminal-body {
+    padding: 20px;
+    color: #00ff41;
+    font-size: 1.1rem;
+}
+
+.prompt { color: #00e5ff; }
+
+.typing-cursor {
+    display: inline-block;
+    width: 10px;
+    height: 1.2em;
+    background: var(--neon-green);
+    vertical-align: bottom;
+    animation: blink 1s infinite;
+}
+
+/* --- SKILLS & PROJECTS CARDS --- */
+.skills-grid, .project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+/* --- Modify this rule in your style.css --- */
+.cyber-card {
+    background: var(--panel-bg);
+    border: 1px solid #333;
+    padding: 30px;
+    position: relative;
+    transition: all 0.3s;
+    
+    /* ADDED FOR PERFECT ALIGNMENT */
+    display: flex; /* Makes the box a flex container */
+    flex-direction: column; /* Stacks children vertically */
+    justify-content: space-between; /* Pushes content from center, buttons go to bottom */
+    min-height: 250px; /* Optional: adds a minimum height so boxes look more similar even with short text */
+}
+
+.cyber-card::before, .project-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 10px; height: 10px;
+    border-top: 2px solid var(--neon-green);
+    border-left: 2px solid var(--neon-green);
+}
+
+.cyber-card::after, .project-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; right: 0;
+    width: 10px; height: 10px;
+    border-bottom: 2px solid var(--neon-green);
+    border-right: 2px solid var(--neon-green);
+}
+
+.cyber-card:hover, .project-card:hover {
+    border-color: var(--neon-green);
+    box-shadow: 0 0 15px rgba(0, 255, 65, 0.2) inset;
+    transform: translateY(-5px);
+}
+
+.active-node {
+    border-color: var(--neon-green);
+}
+
+/* --- Modify this rule in your style.css --- */
+.cyber-card h3 {
+    color: #fff;
+    margin-bottom: 10px; /* Reduces space below title to bring description closer */
+}
+
+.cyber-card ul { list-style: none; }
+.cyber-card li { margin-bottom: 10px; color: #aaa; }
+
+/* --- Add this new rule below your .cyber-card h3 rule --- */
+.cyber-card p {
+    color: #aaa;
+    font-size: 0.95rem;
+    margin-bottom: 25px; /* Added margin above button */
+    
+    /* ADDED FOR ALIGNMENT */
+    flex-grow: 1; /* Tells the description to fill empty vertical space */
+}
+
+.card-image-placeholder {
+    height: 150px;
+    background: #111;
+    border: 1px dashed #444;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+/* --- FOOTER --- */
+.cyber-footer {
+    padding: 60px 10%;
+    background: #000;
+    border-top: 1px solid #333;
+    text-align: center;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.cyber-link {
+    color: #888;
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: color 0.3s;
+}
+
+.cyber-link:hover {
+    color: var(--neon-green);
+    text-shadow: 0 0 8px var(--neon-green);
+}
+
+.copyright {
+    color: #444;
+    font-size: 0.9rem;
+}
+
+/* --- RESPONSIVE --- */
+/* --- RESPONSIVE MOBILE (Upgraded for Side Menu) --- */
+@media (max-width: 768px) {
+    /* Hide desktop links first */
+    .hero { flex-direction: column; text-align: center; padding-top: 100px;}
+    .glitch { font-size: 2.5rem; }
+    .hero-image-container { margin-top: 50px; justify-content: center;}
+    .button-group { justify-content: center; flex-direction: column;}
+
+    /* 1. Transform nav-links into the Sidebar */
+    .nav-links {
+        display: flex; /* Override previous display: none; */
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 70%; /* Sidebar takes up 70% of the screen */
+        height: 100vh;
+        background-color: rgba(5, 5, 5, 0.98); /* Dark background */
+        backdrop-filter: blur(10px);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 40px;
+        padding: 50px;
+        z-index: 1001; /* Above everything */
+        border-left: 2px solid var(--neon-green);
+        box-shadow: -10px 0 30px rgba(0, 255, 65, 0.1);
+        
+        /* THE SECRET SAUCE: Slide it off-screen to the right by default */
+        transform: translateX(100%);
+        transition: transform 0.4s ease-in-out;
+    }
+
+    /* JavaScript will add this class to slide it IN */
+    .nav-links.nav-active {
+        transform: translateX(0%);
+    }
+
+    /* Make links bigger and glowy in the sidebar */
+    .nav-item {
+        font-size: 1.4rem;
+        width: 100%;
+        text-align: center;
+    }
+
+    /* 2. Style the Hamburger Icon (Open button) */
+    .menu-toggle {
+        display: block; /* Shown on mobile */
+        cursor: pointer;
+        z-index: 1000;
+    }
+
+    .menu-toggle .bar {
+        display: block;
+        width: 25px;
+        height: 3px;
+        margin: 5px auto;
+        background-color: var(--neon-green);
+        box-shadow: 0 0 5px var(--neon-green);
+        transition: all 0.3s ease-in-out;
+    }
+
+    /* 3. Style the "X" Close Button *inside* the sidebar */
+    .mobile-close {
+        display: block; /* Shown only in sidebar */
+        position: absolute;
+        top: 30px;
+        right: 30px;
+        background: none;
+        border: none;
+        color: var(--glitch-red);
+        font-family: 'Orbitron', sans-serif;
+        font-size: 1.5rem;
+        cursor: pointer;
+        letter-spacing: 2px;
+        text-shadow: 0 0 10px var(--glitch-red);
+    }
+
+    /* 4. Style the Overlay */
+    .body-overlay {
+        display: none; /* Hidden by default */
+        position: fixed;
+        top: 0; left: 0;
+        width: 100vw; height: 100vh;
+        background-color: rgba(0,0,0,0.7);
+        z-index: 1000; /* Just below the sidebar */
+        backdrop-filter: blur(3px);
+    }
+    
+    .body-overlay.overlay-active {
+        display: block; /* JavaScript will show this */
+    }
+
+    /* Light Mode Overrides for Mobile Sidebar */
+    body.light-mode .nav-links {
+        background-color: rgba(226, 232, 240, 0.98);
+        border-color: #00aa33;
+    }
+    body.light-mode .menu-toggle .bar {
+        background-color: #00aa33;
+    }
+    body.light-mode .mobile-close {
+        color: #dc2626;
+        text-shadow: 0 0 10px #dc2626;
+    }
+}
+
+/* utility for flex centering */
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Initially hide mobile elements on desktop */
+.menu-toggle, .mobile-close, .body-overlay {
+    display: none;
+}
+
+/* --- LIGHT MODE / SCIFI LAB THEME --- */
+body.light-mode {
+    /* Swap out the dark colors for bright, sterile lab colors */
+    --neon-green: #00aa33; /* Darker green so it shows up on white */
+    --dark-bg: #e2e8f0;    /* Light gray/blue lab background */
+    --panel-bg: rgba(255, 255, 255, 0.7);
+    --text-main: #0f172a;  /* Dark text */
+    --glitch-red: #dc2626;
+    --glitch-blue: #2563eb;
+}
+
+/* Specific Light Mode Overrides */
+body.light-mode .hero { background: radial-gradient(circle at center, #cbd5e1 0%, #e2e8f0 100%); }
+body.light-mode .cyber-nav { background: rgba(226, 232, 240, 0.9); }
+body.light-mode .scanlines { opacity: 0.2; } /* Make scanlines softer */
+body.light-mode .terminal-window { background: #ffffff; border-color: #cbd5e1; }
+body.light-mode .terminal-header { background: #f1f5f9; border-bottom: 1px solid #cbd5e1; }
+body.light-mode .terminal-body { color: #000000; }
+body.light-mode .prompt { color: #2563eb; }
+body.light-mode .cyber-footer { background: #cbd5e1; border-top: 1px solid #94a3b8; }
+body.light-mode .image-fallback { background: rgba(255,255,255,0.9); border-color: #00aa33; }
+body.light-mode .glitch::before, body.light-mode .glitch::after { background: var(--dark-bg); }
+body.light-mode .cyber-card, body.light-mode .project-card { box-shadow: 0 10px 20px rgba(0,0,0,0.05); border-color: #cbd5e1; }
+
+/* --- AUDIO CONTROL MODULE --- */
+.audio-control {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 9999;
+}
+
+/* This class gets added by JS when music is playing */
+.audio-active {
+    background: var(--neon-green) !important;
+    color: #000 !important;
+    box-shadow: 0 0 20px var(--neon-green);
+    text-shadow: none !important;
+}
+
+/* Hide it on very small mobile screens if it blocks content */
+@media (max-width: 480px) {
+    .audio-control {
+        bottom: 10px;
+        right: 10px;
+        transform: scale(0.8);
+    }
+}
+
+/* --- CERTIFICATE MODAL SYSTEM --- */
+.cert-card {
+    cursor: pointer;
+}
+
+.cert-card:hover button {
+    background: var(--neon-green);
+    color: #000;
+}
+
+.cyber-modal {
+    display: none; /* Hidden until you click */
+    position: fixed;
+    z-index: 10000;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(8px); /* Blurs the website behind it */
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    position: relative;
+    max-width: 90%;
+    max-height: 90%;
+    border: 2px solid var(--neon-green);
+    background: var(--dark-bg);
+    padding: 20px;
+    box-shadow: 0 0 40px rgba(0, 255, 65, 0.3);
+}
+
+.modal-content img {
+    max-width: 100%;
+    max-height: 75vh;
+    display: block;
+    border: 1px solid #333;
+}
+
+.close-modal {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    color: var(--glitch-red);
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+    letter-spacing: 2px;
+}
+
+.close-modal:hover {
+    color: #fff;
+    text-shadow: 0 0 15px var(--glitch-red);
+}
+
+/* Light Mode Overrides for Modal */
+body.light-mode .cyber-modal { background-color: rgba(255, 255, 255, 0.85); }
+body.light-mode .modal-content { border-color: #00aa33; }
+
+/* --- HOLOGRAPHIC LASER ANIMATION --- */
+.hologram-container {
+    position: relative;
+    display: inline-block;
+    overflow: hidden; /* Keeps the laser inside the image bounds */
+}
+
+#modal-img {
+    max-width: 100%;
+    max-height: 75vh;
+    display: block;
+    border: 1px solid var(--neon-green);
+    
+    /* Starts completely hidden at the top */
+    clip-path: inset(0 0 100% 0); 
+    filter: sepia(100%) hue-rotate(80deg) saturate(400%) blur(4px); /* Starts looking like a green hologram */
+}
+
+.laser-scanner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: #ffffff;
+    box-shadow: 0 0 20px 8px var(--neon-green);
+    opacity: 0;
+    z-index: 10;
+}
+
+/* These classes are triggered by JavaScript */
+.modal-active #modal-img {
+    animation: hologram-reveal 1.5s ease-out forwards;
+}
+
+.modal-active .laser-scanner {
+    animation: laser-scan 1.5s ease-out forwards;
+}
+
+/* The actual animation keyframes */
+@keyframes hologram-reveal {
+    0% { clip-path: inset(0 0 100% 0); filter: sepia(100%) hue-rotate(80deg) saturate(400%) blur(4px); }
+    80% { filter: sepia(100%) hue-rotate(80deg) saturate(400%) blur(0px); }
+    100% { clip-path: inset(0 0 0 0); filter: none; } /* Reveals full real image */
+}
+
+@keyframes laser-scan {
+    0% { top: 0; opacity: 1; }
+    90% { opacity: 1; }
+    100% { top: 100%; opacity: 0; }
+}
+
+.cert-card {
+    cursor: pointer; /* Makes the mouse turn into a clicking hand */
+}
